@@ -1,0 +1,285 @@
+<html>
+	<head>
+		<title>My first Three.js app</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" >
+		<style>canvas { z-index: -1; position: absolute; left:0px; top: 0px; }</style>
+	</head>
+	<style>
+		    body {
+			color: #000;
+			font-family:Monospace;
+			font-size:13px;
+			text-align:center;
+			font-weight: bold;
+
+			background-color: #ffffff;
+			margin: 0px;
+			overflow: hidden; 
+		    }
+			
+			button{
+			color : #000;
+			font-family:Monospace;
+			font-size:13px;
+			text-align:center;
+			font-weight: bold;
+
+			background-color: #ffffff;
+			margin: 0px;
+			z-index : 1;
+			}
+			
+			input{
+			z-index :1;
+			}
+	
+	</style>
+	<body>
+
+		<div>
+			<table id="score" border="0px">
+				<tr height="45%">
+					<td>
+						<div id="down">
+							<p class="stext">DOWN</p>
+							<p class="digital" id="sdown">0</p>
+						</div>
+						<div id="time">
+							<p class="digital" style="margin-top: 10%;" id="stime">15:00</p>
+						</div>
+						<div id="qtr">
+							<p class="stext">QTR</p>
+							<p class="digital" id="sqtr">1</p>
+						</div>
+					</td>
+				</tr>
+				<tr height="55%">
+					<td>
+						<div id="break"></div>
+						<div id="home">
+							<p class="stext" id="hometeam">HOME</p>
+							<p class="digital" id="shome">28</p>
+						</div>
+						<div id="togo">
+							<p class="digital" style="margin-top: 10%;" id="stogo"></p>
+							<!--<p class="stext" style="margin-top: -55%;">To GO</p>-->
+						</div>
+						<div id="guests">
+							<p class="stext" id="guestteam">GUESTS</p>
+							<p class="digital" id="sguests">16</p>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="playType">Play Type</div>
+		<div id="navM" style="height:25px; z-index : 1;">
+			
+			<button id = "buttonFront1"   onclick = "frontCamera1()">      Front        </button>
+			<button id = "buttonBack1"     onclick = "backCamera1()">      Back         </button>
+			<button id = "buttonSide1"     onclick = "sideCamera1()">      side         </button>
+			<button id = "buttonBackSide1" onclick = "backSideCamera1()">  BackSide     </button>
+			<button id = "buttonFront2"    onclick = "frontCamera2()">     FrontTop     </button>
+			<button id = "buttonBack2"     onclick = "backCamera2()">      BackTop      </button>
+			<button id = "buttonSide2"     onclick = "sideCamera2()">      sideTop      </button>
+			<button id = "buttonBackSide2" onclick = "backSideCamera2()">  BackSideTop  </button>
+			
+			<!--<span id = "team1">Team1</span>
+			<select name = "team1"> 
+			<option id = "player1_t1"     onclick = "camFocusVar = 1;changeCameraFocus();";>    Player1  </option>
+			<option id = "player2_t1"     onclick = "camFocusVar = 2;changeCameraFocus();">    Player2  </option>
+			<option id = "player3_t1"     onclick = "camFocusVar = 3;changeCameraFocus();">    Player3  </option>
+			<option id = "player4_t1"     onclick = "camFocusVar = 4;changeCameraFocus();">    Player4  </option>
+			<option id = "player5_t1"     onclick = "camFocusVar = 5;changeCameraFocus();">    Player5  </option>
+			<option id = "player6_t1"     onclick = "camFocusVar = 6;changeCameraFocus();"> 	  Player6  </option>
+			<option id = "player7_t1"     onclick = "camFocusVar = 7;changeCameraFocus();">    Player7  </option>
+			<option id = "player8_t1"     onclick = "camFocusVar = 8;changeCameraFocus();">    Player8  </option>
+			<option id = "player9_t1"     onclick = "camFocusVar = 9;changeCameraFocus();"> 	  Player9  </option>
+			<option id = "player10_t1"    onclick = "camFocusVar = 10;changeCameraFocus();">   Player10 </option>
+			<option id = "player11_t1"    onclick = "camFocusVar = 11;changeCameraFocus();">   Player11 </option>
+			</select>
+			
+			<span id = "team2">Team2</span>
+			<select name = "team2"> 
+			<option id = "player1_t2"     onclick = "camFocusVar = 12;changeCameraFocus();">   Player12 </option>
+			<option id = "player2_t2"     onclick = "camFocusVar = 13;changeCameraFocus();">   Player13 </option>
+			<option id = "player3_t2"     onclick = "camFocusVar = 14;changeCameraFocus();">   Player14 </option>
+			<option id = "player4_t2"     onclick = "camFocusVar = 15;changeCameraFocus();">   Player15 </option>
+			<option id = "player5_t2"     onclick = "camFocusVar = 16;changeCameraFocus();">   Player16 </option>
+			<option id = "player6_t2"     onclick = "camFocusVar = 17;changeCameraFocus();">   Player17 </option>
+			<option id = "player7_t2"     onclick = "camFocusVar = 18;changeCameraFocus();">   Player18 </option>
+			<option id = "player8_t2"     onclick = "camFocusVar = 19;changeCameraFocus();">   Player19 </option>
+			<option id = "player9_t2"     onclick = "camFocusVar = 20;changeCameraFocus();">   Player20 </option>
+			<option id = "player10_t2"    onclick = "camFocusVar = 21;changeCameraFocus();">   Player21 </option>
+			<option id = "player11_t2"    onclick = "camFocusVar = 22;changeCameraFocus();">   Player22 </option>
+			</select>
+			<button id = "default"    onclick = "camFocusVar = 0;changeCameraFocus();">    Default  </button>
+			<button onClick = "updateBallViaJson()">Update</button>
+			-->
+			
+ 
+					</div>
+		<div id="toggle">
+		<button id="sh">Controls</button>
+		</div>
+		<div id="detailText">Details</div>
+		
+		<script type="x-shader/x-vertex" id="vertexShader">
+		varying vec3 vWorldPosition;
+
+			void main() {
+
+				vec4 worldPosition = modelMatrix * vec4( position, 1.0 );
+				vWorldPosition = worldPosition.xyz;
+
+				gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+			}
+
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentShader">
+
+			uniform vec3 topColor;
+			uniform vec3 bottomColor;
+			uniform float offset;
+			uniform float exponent;
+
+			varying vec3 vWorldPosition;
+
+			void main() {
+
+				float h = normalize( vWorldPosition + offset ).y;
+				gl_FragColor = vec4( mix( bottomColor, topColor, max( pow( h, exponent ), 0.0 ) ), 1.0 );
+
+			}
+
+		</script>
+		<script type = "text/javascript" src = "../js/three.js"></script>
+		<script type = "text/javascript" src="../js/OBJLoader.js"></script>
+		<script type = "text/javascript" src='../js/MD2CharacterComplex.js'></script>
+		<script type = "text/javascript" src="../js/stadium.js"></script>
+		<script type = "text/javascript" src='../js/Detector.js'></script>
+		<script type = "text/javascript" src="../js/control.js"></script>
+		<script type = "text/javascript" src="../js/update.js"></script>
+		<script type = "text/javascript" src="../js/text.js"></script>
+		<script type = "text/javascript" src="../js/helvetiker_bold.typeface.js"></script>
+		<script type = "text/javascript" src="../js/helvetiker_regular.typeface.js"></script>
+		<script type = "text/javascript" src="../js/jquery-1.9.1.min.js"></script>		
+		<script type = "text/javascript" src="../js/menu.js"></script>
+		<link href="../css/menu.css" rel="stylesheet" type="text/css">
+		<link href="../css/score.css" rel="stylesheet"  type="text/css" />		
+		<script type = "text/javascript" src="../js/score.js"></script>
+		<!--<script src="../js/stats.min.js"></script>-->
+
+		<script>
+		
+		if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+		var  scene, renderer;
+		var windowScale;
+		var canvas;
+		var canvasWidth;
+		var canvasHeight;
+		var clock = new THREE.Clock();
+		var camera = new Array();
+		var frames = 0;
+		
+		
+		function init() {
+		
+			document.addEventListener( 'keydown', onKeyDown, false );
+			document.addEventListener( 'keyup', onKeyUp, false );
+		
+			canvasWidth = window.innerWidth;
+			canvasHeight = window.innerHeight;
+			var canvasRatio = canvasWidth / canvasHeight;
+			
+			// SCENE
+			scene = new THREE.Scene();
+			scene.fog = new THREE.Fog( 0x808080 ,700, 4000);
+				
+				
+			// stats
+			/*stats = new Stats();
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.top = '0px';
+			stats.domElement.style.left = '400px';
+			
+			document.body.appendChild( stats.domElement );
+			*/
+
+
+			// RENDERER
+
+			renderer = new THREE.WebGLRenderer( { antialias: true } );
+			renderer.setSize( canvasWidth, canvasHeight );
+			
+			
+
+			//
+
+			renderer.gammaInput = true;
+			renderer.gammaOutput = true;
+			renderer.shadowMapEnabled = true;
+
+			document.body.appendChild(renderer.domElement)
+			
+		
+			// CAMERA
+			camera = new THREE.PerspectiveCamera( 45, canvasRatio, 1, 4000 );
+			camera.position.set( 150, 40, 250 );
+			scene.add(camera);
+			
+			// adding the ground
+			
+			scene.add(addGround());
+			scene.add(addGround1());
+			
+			// adding light in the screen
+			
+			addLight(scene);
+			
+			//adding the sky
+			addSky(scene);
+			
+			// adding the football
+			addFootBall(scene);
+			
+			// add players
+			//addPlayers(scene);
+			
+			
+			//
+			//updateText();
+			
+			
+			// update match metadata
+			//updateMatchMetadata();
+			showTeamname();			
+			ballPossession = showText(".", 4, 1, "helvetiker", ball.position.x, ball.position.y + 6, ball.position.z, 0x000000, scene,  0, 0, 0);			
+}
+
+			function animate() {
+				requestAnimationFrame(animate);
+				render();
+				update();
+				frames++;
+				//stats.update();
+			}
+
+			function render() {
+				renderer.render(scene, camera);
+			}
+			
+			// parsing the given data
+			pasringJson("./json1.txt");
+			
+			init();
+			changeCameraFocus();
+			animate();
+			
+			
+			</script>
+	</body>
+</html>

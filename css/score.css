@@ -1,0 +1,99 @@
+#score {
+	background-color: #000000;
+	opacity: 0.999;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 2;
+	color: #ffffff;
+}
+
+#down {
+	width: 26%;
+	height: 45%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#time {
+	width: 48%;
+	height: 45%;
+	position: absolute;
+	left: 26%;
+	top: 0px;
+}
+
+#qtr {
+	width: 26%;
+	height: 45%;
+	position: absolute;
+	left: 74%;
+	top: 0px;
+}
+
+#home {
+	width: 30%;
+	height: 55%;
+	position: absolute;
+	left: 0px;
+	top: 45%;
+}
+
+#togo {
+	width: 34%;
+	height: 55%;
+	position: absolute;
+	left: 30%;
+	top: 45%;
+}
+
+#guests {
+	width: 36%;
+	height: 55%;
+	position: absolute;
+	left: 64%;
+	top: 45%;
+}
+
+.stext {
+	font-family: verdana;
+	font-weight: bold;
+	text-align: center;
+}
+
+.digital {
+	color : #af1111;
+	font-family: verdana;
+	font-weight: 400;
+	text-align: center;
+	margin-top: -22%;
+}
+
+#break {
+	background-color: #ffffff;
+}
+
+#detailText {
+	height: 16px;
+	width: 100%;
+	font-family: verdana;
+	font-size: 12px;
+	text-align: center;
+	background-color: #000000;
+	opacity: 0.75;
+	color: #ffffff;
+}
+
+#playType {
+	height: 16px;
+	font-family: verdana;
+	font-size: 13px;
+	padding-left: 4px;
+	padding-right: 6px;
+	text-align: left;
+	background-color: #000000;
+	opacity: 0.75;
+	color: #ffffff;
+	position: absolute;
+}

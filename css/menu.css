@@ -1,0 +1,15 @@
+#navM {
+	background-color: #000000;
+	opacity: 0.4;
+	color: #ffffff;
+	display:none;
+	padding: 3px;
+}
+
+#sh {
+	position: relative;
+}
+
+#toggle {
+	color: #ffffff;
+}
